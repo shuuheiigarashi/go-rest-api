@@ -1,13 +1,24 @@
+// main.go
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"go-rest-api/docs"
+	"go-rest-api/handlers"
+
+	"github.com/gin-gonic/gin"
+	"github.com/swaggo/gin-swagger"
+)
 
 func main() {
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run() // 0.0.0.0:8080 でサーバーを立てます。
+
+	// Swaggerのエンドポイントを設定
+	docs.SwaggerInfo.Title = "Your API"
+	docs.SwaggerInfo.Version = "1.0"
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	// ここにAPIルートを追加
+	r.GET("/ping", handlers.Ping)
+
+	r.Run(":8080")
 }
