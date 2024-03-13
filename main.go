@@ -4,6 +4,7 @@ package main
 import (
 	"github.com/shuuheiigarashi/go-rest-api/docs"
 	"github.com/shuuheiigarashi/go-rest-api/handlers"
+	"github.com/shuuheiigarashi/go-rest-api/routes"
 
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
@@ -20,6 +21,7 @@ func main() {
 
 	// ここにAPIルートを追加
 	r.GET("/ping", handlers.Ping)
+	routes.SetupUserRoutes(r)
 
 	r.Run(":8080")
 }
