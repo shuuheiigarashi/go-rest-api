@@ -2,11 +2,12 @@
 package main
 
 import (
-	"go-rest-api/docs"
-	"go-rest-api/handlers"
+	"github.com/shuuheiigarashi/go-rest-api/docs"
+	"github.com/shuuheiigarashi/go-rest-api/handlers"
 
 	"github.com/gin-gonic/gin"
-	"github.com/swaggo/gin-swagger"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func main() {
